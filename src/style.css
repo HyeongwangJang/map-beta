@@ -1,0 +1,21 @@
+.tool-container {
+  position: absolute;
+  z-index: 99;
+}
+.tool-container.horizontal {
+  display: flex;
+  flex-direction: row;
+  top: .5em; right: 64px;
+}
+.tool-container.vertical {
+  display: flex; flex-direction: column;
+  top: 48px;
+  right: .5em;
+}
+
+.tool-container .tool-button {
+
+}
+.tool-container .tool-button.active {
+  background-color: #aaaaaa;
+}

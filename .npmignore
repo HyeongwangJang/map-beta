@@ -1,0 +1,15 @@
+**/.*
+*.iml
+node_modules/
+test/
+public/
+
+# source
+
+# configuration
+package-lock.json
+tslint.json
+tsconfig.json
+jsconfig.json
+.prettierrc
+rollup.config.js
