@@ -2,7 +2,6 @@ import * as ol from 'ol'
 import { getArea, getLength } from 'ol/sphere'
 import { LineString, Polygon } from 'ol/geom'
 import { Draw } from 'ol/interaction'
-import { Coordinate } from 'ol/coordinate'
 import { unByKey } from 'ol/Observable'
 
 import SphMap from '../map/sph-map'
@@ -213,7 +212,7 @@ class MeasurementControl extends HTMLElement {
       this.sketch = evt.feature
 
       /**
-       * @type { Coordinate | undefined }
+       * @type { import('ol/coordinate').Coordinate | undefined }
        */
       let tooltipCoord = evt.coordinate
 
