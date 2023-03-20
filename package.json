@@ -2,7 +2,6 @@
   "name": "@hyeongwangjang/map-beta",
   "version": "0.0.1-beta.6",
   "type": "module",
-  "module": "lib",
   "repository": {
     "type": "git",
     "url": "https://github.com/HyeongwangJang/map-beta"
@@ -10,8 +9,10 @@
   "scripts": {
     "dev": "vite",
     "build:vite": "vite build",
-    "build:rollup": "rollup -c ./rollup.config.js",
-    "preview": "vite preview"
+    "preview": "vite preview",
+
+    "setup": "node setupPackage.js",
+    "publish": "node setupPackage.js && cd lib && npm publish"
   },
   "devDependencies": {
     "vite": "^4.1.0"

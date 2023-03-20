@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 
 .npmrc
+
+# lib/
+lib/package.json
+lib/version.txt
+lib/.npmignore
