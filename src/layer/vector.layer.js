@@ -4,7 +4,7 @@ import Fill from "ol/style/Fill"
 import Stroke from "ol/style/Stroke"
 import Style from "ol/style/Style"
 
-import MapService from "../service/MapService"
+import MapService from "../service/map.service"
 
 /**
  * @class

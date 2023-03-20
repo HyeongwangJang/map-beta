@@ -4,7 +4,7 @@ import OSM from 'ol/source/OSM.js'
 class OsmLayer extends HTMLElement {
 
   /**
-   * @property { Map }
+   * @type { Map }
    * @private
    */
   map
@@ -32,7 +32,6 @@ class OsmLayer extends HTMLElement {
 
     this.map.getLayers().forEach((layer) => {
       if(layer.get('id') === 'osm') {
-        console.log('layer', layer)
       }
     })
   }

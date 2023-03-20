@@ -4,12 +4,10 @@ import { LineString, Polygon } from 'ol/geom'
 import { Draw } from 'ol/interaction'
 import { unByKey } from 'ol/Observable'
 
-import SphMap from '../map/sph-map'
-
 import { CONTROL } from '../constants'
 
-import MapService from '../service/MapService'
-import ControlService from '../service/ControlService'
+import MapService from '../service/map.service'
+import ControlService from '../service/control.service'
 
 /**
  * @class
@@ -86,8 +84,10 @@ class MeasurementControl extends HTMLElement {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
-    this.mapService = document.querySelector<SphMap>('sph-map').mapService
-    this.controlService = document.querySelector<SphMap>('sph-map').controlService
+    this.mapService = document.querySelector('sph-map').mapService
+    this.controlService = document.querySelector('sph-map').controlService
+
+    console.log('control map service', this.mapService)
   }
 
   connectedCallback() {
@@ -211,9 +211,7 @@ class MeasurementControl extends HTMLElement {
       // set sketch
       this.sketch = evt.feature
 
-      /**
-       * @type { import('ol/coordinate').Coordinate | undefined }
-       */
+      /**  @type { import('ol/coordinate').Coordinate | undefined } */
       let tooltipCoord = evt.coordinate
 
       this.listener = this.sketch.getGeometry().on('change', (evt) => {

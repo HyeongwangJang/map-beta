@@ -2,8 +2,8 @@ import { Map, View } from 'ol'
 import { FullScreen } from 'ol/control'
 import { defaults } from 'ol/control/defaults'
 
-import ControlService from '../service/ControlService'
-import MapService from '../service/MapService'
+import ControlService from '../service/control.service'
+import MapService from '../service/map.service'
 
 class SphMap extends HTMLElement {
 
@@ -76,7 +76,7 @@ class SphMap extends HTMLElement {
   
 }
 
-customElements.define('sph-map', SphMap)
+customElements.define('basic-map', SphMap)
 
 export default SphMap
 

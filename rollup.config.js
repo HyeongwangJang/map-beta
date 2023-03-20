@@ -1,6 +1,6 @@
 import babel from '@rollup/plugin-babel';
 
-const extensions = ['.js', '.jsx', '.ts', '.tsx']; // 어떤 확장자를 처리 할 지 정함
+const extensions = ['.js', '.jsx']; // 어떤 확장자를 처리 할 지 정함
 
 const inputs = [
   './src/constants.js',

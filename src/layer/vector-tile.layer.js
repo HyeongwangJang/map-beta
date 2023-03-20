@@ -2,7 +2,6 @@ import { Map } from "ol"
 import { VectorTile as VTLayer } from 'ol/layer'
 import { VectorTile as VT } from 'ol/source'
 import MVT from 'ol/format/MVT'
-
 import { createXYZ } from 'ol/tilegrid'
 
 class VectorTileLayer extends HTMLElement {
