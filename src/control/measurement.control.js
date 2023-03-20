@@ -18,9 +18,15 @@ class MeasurementControl extends HTMLElement {
 
   /**
    * @private
+   * @type { Map }
+   */
+  map
+
+  mapService
+  /**
+   * @private
    * @type { MapService }
    */
-  mapService
 
   /**
    * @private
@@ -84,10 +90,10 @@ class MeasurementControl extends HTMLElement {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
-    this.mapService = document.querySelector('basic-map').mapService
-    this.controlService = document.querySelector('basic-map').controlService
 
-    console.log('control map service', this.mapService)
+    this.map = document.querySelector('base-map').map
+    this.mapService = new MapService(this.map)
+    this.controlService = new ControlService(this.map)
   }
 
   connectedCallback() {
@@ -135,7 +141,7 @@ class MeasurementControl extends HTMLElement {
 
     switch (tool) {
       case 'area':
-        this.mapService.map.removeInteraction(this.draw)
+        this.map.removeInteraction(this.draw)
         if (this.controlService.currentControl !== CONTROL.areaMeasurement) {
           this.addInteraction('Polygon')
           this.controlService.currentControl = CONTROL.areaMeasurement
@@ -144,7 +150,7 @@ class MeasurementControl extends HTMLElement {
         }
         break
       case 'distance':
-        this.mapService.map.removeInteraction(this.draw)
+        this.map.removeInteraction(this.draw)
         if (this.controlService.currentControl !== CONTROL.distanceMeasurement) {
           this.addInteraction('LineString')
           this.controlService.currentControl = CONTROL.distanceMeasurement
@@ -255,7 +261,7 @@ class MeasurementControl extends HTMLElement {
       offset: [15, 0],
       positioning: 'center-left',
     })
-    this.mapService.map.addOverlay(this.helpTooltip)
+    this.map.addOverlay(this.helpTooltip)
   }
 
   /**
@@ -276,7 +282,7 @@ class MeasurementControl extends HTMLElement {
       stopEvent: false,
       insertFirst: false,
     })
-    this.mapService.map.addOverlay(this.measureTooltip)
+    this.map.addOverlay(this.measureTooltip)
   }
 
 }

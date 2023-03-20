@@ -2,25 +2,12 @@ import { Map, View } from 'ol'
 import { FullScreen } from 'ol/control'
 import { defaults } from 'ol/control/defaults'
 
-import ControlService from '../service/control.service'
-import MapService from '../service/map.service'
-
-class SphMap extends HTMLElement {
+class BaseMap extends HTMLElement {
 
   /**
    * @type { Map }
    */
   map
-
-  /**
-   * @type { MapService }
-   */
-  mapService
-
-  /**
-   * @type { ControlService }
-   */
-  controlService
 
   constructor() {
     super()
@@ -30,9 +17,7 @@ class SphMap extends HTMLElement {
   connectedCallback() {
     this.render()
     this.createMap()
-
-    this.mapService = new MapService(this.map)
-    this.controlService = new ControlService(this.map)
+    this.createLayers()
   }
 
   get width() {
@@ -73,10 +58,17 @@ class SphMap extends HTMLElement {
       })
     })
   }
+
+  /**
+   * db에서 layer 목록 호출 & 생성 & 추가
+   */
+  createLayers() {
+    
+  }
   
 }
 
-customElements.define('basic-map', SphMap)
+customElements.define('base-map', BaseMap)
 
-export default SphMap
+export default BaseMap
 

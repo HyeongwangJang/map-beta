@@ -12,7 +12,7 @@ class OsmLayer extends HTMLElement {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
-    this.map = document.querySelector('basic-map').map
+    this.map = document.querySelector('base-map').map
   }
 
   connectedCallback() {

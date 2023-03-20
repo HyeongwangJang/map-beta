@@ -1,10 +1,9 @@
+import { Map } from "ol"
 import VLayer from "ol/layer/Vector"
 import { Vector } from "ol/source"
 import Fill from "ol/style/Fill"
 import Stroke from "ol/style/Stroke"
 import Style from "ol/style/Style"
-
-import MapService from "../service/map.service"
 
 /**
  * @class
@@ -32,16 +31,16 @@ class VectorLayer extends HTMLElement {
   layer
 
   /**
-   * @type { MapService }
+   * @type { Map }
    * @private
    */
-  mapService
+  map
 
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
 
-    this.mapService = document.querySelector('basic-map').mapService
+    this.map = document.querySelector('base-map').map
   }
 
   connectedCallback() {
@@ -69,7 +68,7 @@ class VectorLayer extends HTMLElement {
     })
     this.layer.set('id', this.id)
 
-    this.mapService.map.addLayer(this.layer)
+    this.map.addLayer(this.layer)
   }
   
 }
