@@ -84,8 +84,8 @@ class MeasurementControl extends HTMLElement {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
-    this.mapService = document.querySelector('sph-map').mapService
-    this.controlService = document.querySelector('sph-map').controlService
+    this.mapService = document.querySelector('basic-map').mapService
+    this.controlService = document.querySelector('basic-map').controlService
 
     console.log('control map service', this.mapService)
   }

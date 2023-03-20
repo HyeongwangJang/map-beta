@@ -41,7 +41,7 @@ class VectorLayer extends HTMLElement {
     super()
     this.attachShadow({ mode: 'open' })
 
-    this.mapService = document.querySelector('sph-map').mapService
+    this.mapService = document.querySelector('basic-map').mapService
   }
 
   connectedCallback() {
