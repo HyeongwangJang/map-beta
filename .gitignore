@@ -29,3 +29,6 @@ dist-ssr
 lib/package.json
 lib/version.txt
 lib/.npmignore
+
+# dist
+dist
