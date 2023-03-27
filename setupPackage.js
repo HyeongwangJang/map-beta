@@ -14,10 +14,10 @@ function main() {
     sourceObj.main = sourceObj.main.slice(4)
   }
   // dependency 설정
-  sourceObj.dependencies = {}
+  // sourceObj.dependencies = {}
 
   // peer dependency 설정
-  // sourceObj.peerDependencies = 
+  // sourceObj.peerDependencies = {}
 
   fs.writeFileSync(__dirname + '/lib/package.json', Buffer.from(JSON.stringify(sourceObj, null, 2), 'utf-8'))
   fs.writeFileSync(__dirname + '/lib/version.txt', Buffer.from(sourceObj.version, 'utf-8'))
