@@ -15,7 +15,7 @@ function main() {
   fs.rmSync('dist', { recursive: true, force: true })
   
   // lib 폴더를 dist 로 복사
-  fse.copy('lib', 'dist', e =>{
+  fse.copy('lib', 'dist', e => {
     if(e) return console.error(e);
     
     parsedPackageJson.scripts = {}
