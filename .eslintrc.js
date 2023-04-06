@@ -4,7 +4,10 @@ module.exports = {
         "browser": true,
         "es2021": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "eslint-config-prettier"
+    ],
     "overrides": [
     ],
     "parserOptions": {
@@ -12,5 +15,5 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
-    }
+    },
 }
