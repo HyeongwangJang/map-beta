@@ -1,15 +1,18 @@
-# npm install 방법
+# map-beta
+map-beta...
 
+## version
+```
+node v14.18.1
+npm v6.14.15
 ```
 
-```
-
+## npm install 방법
 ```
 npm install @hyeongwangjang/map-beta@version
 # or
 npm install @hyeongwangjang/map-beta@latest
 ```
 
-# 사용 예시
-
-`index.html` 참고
+## example
+`example/index.html`

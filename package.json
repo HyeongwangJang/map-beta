@@ -10,11 +10,13 @@
     "dev": "vite",
     "build:vite": "vite build",
     "preview": "vite preview",
+    
     "lint": "npx eslint lib",
     "lint:fix": "npm run lint -- --fix",
     "prettier": "npx prettier lib --check",
     "prettier:fix": "npm run prettier -- --write",
     "format": "npm run prettier:fix && npm run lint:fix",
+
     "setup": "node setupPackage.js",
     "build": "tsc",
     "publish:pre": "npm run setup && npm run build",
