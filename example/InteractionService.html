@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>인터랙션 테스트</title>
+
+  <link rel="stylesheet" href="lib/style.css" />
+</head>
+
+<style>
+  .switch-field {
+    display: flex;
+    margin-bottom: 36px;
+    overflow: hidden;
+  }
+
+  .switch-field input {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+  }
+
+  .switch-field label {
+    background-color: #e4e4e4;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+    padding: 8px 16px;
+    margin-right: -1px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+    transition: all 0.1s ease-in-out;
+  }
+
+  .switch-field label:hover {
+    cursor: pointer;
+  }
+
+  .switch-field input:checked+label {
+    background-color: #a5dc86;
+    box-shadow: none;
+  }
+
+  .switch-field label:first-of-type {
+    border-radius: 4px 0 0 4px;
+  }
+
+  .switch-field label:last-of-type {
+    border-radius: 0 4px 4px 0;
+  }
+</style>
+
+<body>
+
+  <h1>인터랙션 세트 1</h1>
+  <div class="switch-field">
+    <input type="radio" id="a" name="interaction-set-1" value="yes" checked />
+    <label for="a">first</label>
+    <input type="radio" id="b" name="interaction-set-1" value="maybe" />
+    <label for="b">second</label>
+    <input type="radio" id="c" name="interaction-set-1" value="no" />
+    <label for="c">third</label>
+  </div>
+
+  <h1>인터랙션 세트 2</h1>
+  <div class="switch-field">
+    <input type="radio" id="d" name="interaction-set-2" value="yes" checked />
+    <label for="d">fourth</label>
+    <input type="radio" id="e" name="interaction-set-2" value="maybe" />
+    <label for="e">fifth</label>
+    <input type="radio" id="f" name="interaction-set-2" value="no" />
+    <label for="f">sixth</label>
+  </div>
+
+</body>
+
+<script type="module">
+
+  import InteractionService from '../lib/service/InteractionService'
+
+  const btnA = document.querySelector('#a')
+  const btnB = document.querySelector('#b')
+  const btnC = document.querySelector('#c')
+
+  const interactionService1 = new InteractionService();
+
+  btnA.addEventListener('click', interactionService1.firstHandler.bind(interactionService1));
+  btnB.addEventListener('click', interactionService1.secondHandler.bind(interactionService1));
+  btnC.addEventListener('click', interactionService1.thirdHandler.bind(interactionService1));
+
+  const btnD = document.querySelector('#d')
+  const btnE = document.querySelector('#e')
+  const btnF = document.querySelector('#f')
+
+  const interactionService2 = new InteractionService();
+
+  btnD.addEventListener('click', interactionService2.firstHandler.bind(interactionService2));
+  btnE.addEventListener('click', interactionService2.secondHandler.bind(interactionService2));
+  btnF.addEventListener('click', interactionService2.thirdHandler.bind(interactionService2));
+
+
+</script>
+
+</html>
