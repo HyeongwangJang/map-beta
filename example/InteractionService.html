@@ -126,7 +126,7 @@
   const interactionService1 = new InteractionService(map);
 
   btnA.addEventListener('click', interactionService1.panningHandler.bind(interactionService1));
-  btnB.addEventListener('click', interactionService1.popupModeHandler.bind(interactionService1));
+  btnB.addEventListener('click', interactionService1.positionOverlayHandler.bind(interactionService1));
   btnDist.addEventListener('click', interactionService1.distanceMeasurementHandler.bind(interactionService1));
 
   const btnD = document.querySelector('#d')
