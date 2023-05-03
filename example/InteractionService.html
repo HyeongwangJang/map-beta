@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>인터랙션 테스트</title>
 
-  <link rel="stylesheet" href="lib/style.css" />
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@main/dist/en/v7.0.0/legacy/ol.css" />
+  <link rel="stylesheet" href="../lib/popup/popup.css" />
 </head>
 
 <style>
@@ -58,14 +60,18 @@
 
 <body>
 
+  <div id="map" style="width: 800px; height: 400px;"></div>
+
   <h1>인터랙션 세트 1</h1>
   <div class="switch-field">
     <input type="radio" id="a" name="interaction-set-1" value="yes" checked />
-    <label for="a">first</label>
+    <label for="a">일반모드</label>
     <input type="radio" id="b" name="interaction-set-1" value="maybe" />
-    <label for="b">second</label>
-    <input type="radio" id="c" name="interaction-set-1" value="no" />
-    <label for="c">third</label>
+    <label for="b">팝업모드</label>
+    <input type="radio" id="dist" name="interaction-set-1" value="maybe" />
+    <label for="dist">거리측정</label>
+    <input type="radio" id="area" name="interaction-set-1" value="maybe" />
+    <label for="area">면적측정</label>
   </div>
 
   <h1>인터랙션 세트 2</h1>
@@ -81,24 +87,53 @@
 </body>
 
 <script type="module">
+  import { Map, View } from 'ol';
+  import Tile from 'ol/layer/Tile'
+  import VectorLayer from 'ol/layer/Vector';
+  import { Vector } from 'ol/source';
+  import OSM from 'ol/source/OSM.js';
 
   import InteractionService from '../lib/service/InteractionService'
 
+  var map = new Map({
+    target: 'map',
+    layers: [
+      new Tile({
+        source: new OSM()
+      }),
+    ],
+    view: new View({
+      center: [0, 0],
+      zoom: 2,
+    }),
+  });
+
+  const measurementLayer = new VectorLayer({
+    source: new Vector({
+      features: [],
+      wrapX: false,
+    }),
+    // style: 
+  })
+  measurementLayer.set('id', 'measurement-layer');
+  map.addLayer(measurementLayer);
+
   const btnA = document.querySelector('#a')
   const btnB = document.querySelector('#b')
-  const btnC = document.querySelector('#c')
+  const btnDist = document.querySelector('#dist')
+  // const btnArea = document.querySelector('#area')
 
-  const interactionService1 = new InteractionService();
+  const interactionService1 = new InteractionService(map);
 
-  btnA.addEventListener('click', interactionService1.firstHandler.bind(interactionService1));
-  btnB.addEventListener('click', interactionService1.secondHandler.bind(interactionService1));
-  btnC.addEventListener('click', interactionService1.thirdHandler.bind(interactionService1));
+  btnA.addEventListener('click', interactionService1.panningHandler.bind(interactionService1));
+  btnB.addEventListener('click', interactionService1.popupModeHandler.bind(interactionService1));
+  btnDist.addEventListener('click', interactionService1.distanceMeasurementHandler.bind(interactionService1));
 
   const btnD = document.querySelector('#d')
   const btnE = document.querySelector('#e')
   const btnF = document.querySelector('#f')
 
-  const interactionService2 = new InteractionService();
+  const interactionService2 = new InteractionService(map);
 
   btnD.addEventListener('click', interactionService2.firstHandler.bind(interactionService2));
   btnE.addEventListener('click', interactionService2.secondHandler.bind(interactionService2));
